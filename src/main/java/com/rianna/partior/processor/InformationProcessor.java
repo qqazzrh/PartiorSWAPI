@@ -15,13 +15,13 @@ public class InformationProcessor {
 
     public StarShip getSWStarShip(String name) {
 
-        People people1 = swApiFetcher.getPeopleFromName(name);
+        People starshipOwner = swApiFetcher.getPeopleFromName(name);
         //This can actually be a list if owner has multiple startships.
         //but in this case, since we only want one start ship, return one only
-        if(people1==null || people1.getStarships().size() == 0){
+        if(starshipOwner==null || starshipOwner.getStarships().size() == 0){
             return null;
         }
-        String starShipApi =  people1.getStarships().get(0);
+        String starShipApi =  starshipOwner.getStarships().get(0);
         return swApiFetcher.getStarShipFromUrl(starShipApi);
     }
 
@@ -32,7 +32,7 @@ public class InformationProcessor {
             return 0;
         }
         logger.info("Fetched starship info:" + starShip.toString());
-        return Integer.getInteger(starShip.getCrew().replace(",",""));
+        return starShip.getCrew();
 
     }
 

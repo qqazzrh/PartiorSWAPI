@@ -1,43 +1,48 @@
 package com.rianna.partior.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "starShip", "crew", "isLeiaOnPlanet" })
 public class Information {
-    private final StarShipInfo starship;
+    private final StarShip starShip;
     private final Integer crew;
     private final Boolean isLeiaOnPlanet;
 
     private Information(InformationBuilder builder){
-        this.starship = builder.starship;
+        this.starShip = builder.starShip;
         this.crew = builder.crew;
         this.isLeiaOnPlanet = builder.isLeiaOnPlanet;
     }
 
-    public StarShipInfo getStarship() {
-        return starship;
+    @JsonGetter("starship")
+    public StarShip getStarShip() {
+        return starShip;
     }
 
     public Integer getCrew() {
         return crew;
     }
 
-    public Boolean getIsLeiaOnPlanet() {
+    public Boolean getLeiaOnPlanet() {
         return isLeiaOnPlanet;
     }
 
     @Override
     public String toString() {
-        return "Information: "+this.starship.toString()+", "+this.crew+", "+this.isLeiaOnPlanet;
+        return "Information: the starship in use: " + this.starShip.toString() + " the number of crews on board: " + this.crew + " if Princess Leia is in: " + isLeiaOnPlanet;
     }
 
     public static class InformationBuilder{
-        private StarShipInfo starship;
+        private StarShip starShip;
         private Integer crew;
         private Boolean isLeiaOnPlanet;
 
         public InformationBuilder(){}
 
-        public InformationBuilder starShip(StarShipInfo starship){
-            this.starship = starship;
+        public InformationBuilder starShip(StarShip starShip){
+            this.starShip = starShip;
             return this;
         }
 

@@ -1,14 +1,24 @@
 package com.rianna.partior.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.NONE,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        creatorVisibility = JsonAutoDetect.Visibility.NONE
+)
+@JsonPropertyOrder({ "name", "class", "model" })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StarShip {
+    @JsonProperty("name")
     private String name;
 
+    @JsonProperty("model")
     private String model;
 
-    private String starship_class;
+    @JsonProperty("class")
+    private String ssclass;
 
     private String url;
 
@@ -31,12 +41,14 @@ public class StarShip {
         this.model = model;
     }
 
-    public String getStarship_class() {
-        return starship_class;
+    @JsonGetter("class")
+    public String getSsclass() {
+        return ssclass;
     }
 
-    public void setStarship_class(String starship_class) {
-        this.starship_class = starship_class;
+    @JsonSetter("starship_class")
+    public void setSsclass(String ssclass) {
+        this.ssclass = ssclass;
     }
 
     public String getUrl() {
@@ -47,8 +59,8 @@ public class StarShip {
         this.url = url;
     }
 
-    public String getCrew() {
-        return crew;
+    public Integer getCrew() {
+        return Integer.valueOf(crew.replace(",",""));
     }
 
     public void setCrew(String crew) {
@@ -57,11 +69,7 @@ public class StarShip {
 
     @Override
     public String toString() {
-        return "StarShip: "+ this.crew+", "+this.name;
-    }
-
-    public StarShipInfo castToStarShipInfo() {
-        return new StarShipInfo(name, starship_class,model);
+        return "StarShip: "+ this.crew+", "+this.name +" class :" + this.ssclass;
     }
 
 }
