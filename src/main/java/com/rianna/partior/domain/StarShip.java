@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.*;
 )
 @JsonPropertyOrder({ "name", "class", "model" })
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StarShip {
+
     @JsonProperty("name")
     private String name;
 

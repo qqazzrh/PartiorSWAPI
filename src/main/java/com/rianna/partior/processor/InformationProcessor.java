@@ -19,7 +19,7 @@ public class InformationProcessor {
         //This can actually be a list if owner has multiple startships.
         //but in this case, since we only want one start ship, return one only
         if(starshipOwner==null || starshipOwner.getStarships().size() == 0){
-            return null;
+            return new StarShip();
         }
         String starShipApi =  starshipOwner.getStarships().get(0);
         return swApiFetcher.getStarShipFromUrl(starShipApi);

@@ -1,7 +1,9 @@
 package com.rianna.partior.processor;
 
 import com.rianna.partior.domain.StarShip;
+import com.rianna.partior.exceptions.RecordNotFoundException;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +35,14 @@ class SwApiFetcherTest {
     }
 
     @Test
-    void test_getStarShipFromName_whenNull() {
-        StarShip starShip = swApiFetcher.getStarShipFromName("dummu");
+    public void test_getStarShipFromName_whenNull() {
+        Exception exception = assertThrows(RecordNotFoundException.class, () -> {
+            swApiFetcher.getStarShipFromName("dummu");
+        });
 
-        assertEquals(null,starShip );
+        Assertions.assertEquals("Starship dummu is not found. API: https://swapi.dev/api/starships/?search=dummu",
+                exception.getMessage());
+
     }
 
 }

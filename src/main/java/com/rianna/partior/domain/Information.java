@@ -26,7 +26,7 @@ public class Information {
     }
 
     @JsonGetter("isLeiaOnPlanet")
-    public Boolean getLeiaOnPlanet() {
+    public Boolean getIsLeiaOnPlanet() {
         return isLeiaOnPlanet;
     }
 

@@ -13,8 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwController {
 
-    //TODO: 1. clean up code; 2. add test; 3. error handling; 4. customized input; 5. cleanup maven
-
     @Autowired
     StarshipService starshipService;
 
@@ -26,4 +24,13 @@ public class SwController {
             logger.info("information fetched [{}]", info.toString());
             return info ;
     }
+
+    @RequestMapping(value = "/customized/information", produces = "application/json" ,method = RequestMethod.GET)
+    public Information getInformation(@RequestParam String owner, @RequestParam String starship, @RequestParam String planet, @RequestParam String lostPerson ) {
+        Information info = starshipService.formFinalResponse(owner,starship,planet,lostPerson);
+        logger.info("information fetched [{}]", info.toString());
+        return info ;
+    }
+
+
 }
