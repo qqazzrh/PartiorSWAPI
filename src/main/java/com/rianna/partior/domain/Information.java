@@ -3,6 +3,7 @@ package com.rianna.partior.domain;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @JsonPropertyOrder({ "starShip", "crew", "isLeiaOnPlanet" })
 public class Information {
@@ -25,6 +26,7 @@ public class Information {
         return crew;
     }
 
+    @JsonGetter("isLeiaOnPlanet")
     public Boolean getLeiaOnPlanet() {
         return isLeiaOnPlanet;
     }
