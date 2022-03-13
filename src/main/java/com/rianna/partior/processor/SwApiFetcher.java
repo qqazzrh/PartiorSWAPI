@@ -35,7 +35,7 @@ public class SwApiFetcher {
         PlanetRestResponse planetRestResponse = restTemplate.getForObject(
                 searchUrl , PlanetRestResponse.class);
         if(planetRestResponse.getCount()<1){
-            return null;
+            throw new RecordNotFoundException("Planet " + name +" is not found. API: " + searchUrl);
         }
         Planet planet = planetRestResponse.getResults().get(0);
         return planet;
@@ -49,7 +49,7 @@ public class SwApiFetcher {
                 searchUrl, StarShipRestResponse.class);
 
         if(starShipRestResponse.getCount()<1){
-            return null;
+            throw new RecordNotFoundException("Starship " + name +" is not found. API: " + searchUrl);
         }
         StarShip starShip = starShipRestResponse.getResults().get(0);
         logger.info(starShip.toString());

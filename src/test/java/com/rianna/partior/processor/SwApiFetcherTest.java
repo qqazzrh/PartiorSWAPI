@@ -23,15 +23,6 @@ class SwApiFetcherTest {
 
     @Before
     public void setup(){
-
-
-    }
-    @Test
-    void getPeopleFromName() {
-    }
-
-    @Test
-    void getPlanetFromName() {
     }
 
     @Test
@@ -48,8 +39,4 @@ class SwApiFetcherTest {
         assertEquals(null,starShip );
     }
 
-
-    @Test
-    void getStarShipFromUrl() {
-    }
 }

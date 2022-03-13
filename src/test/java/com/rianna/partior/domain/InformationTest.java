@@ -19,7 +19,4 @@ class InformationTest {
 
     }
 
-    @Test
-    void getIsLeiaOnPlanet() {
-    }
 }

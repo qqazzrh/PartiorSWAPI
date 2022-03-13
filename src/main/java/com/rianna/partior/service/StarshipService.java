@@ -23,7 +23,7 @@ public class StarshipService {
     }
 
 
-    StarShip getStarship(String starshipOwner) {
+    private StarShip getStarship(String starshipOwner) {
         StarShip starship = informationProcessor.getSWStarShip(starshipOwner);
         return starship;
     }
