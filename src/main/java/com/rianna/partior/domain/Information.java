@@ -32,7 +32,11 @@ public class Information {
 
     @Override
     public String toString() {
-        return "Information: the starship in use: " + this.starShip.toString() + " the number of crews on board: " + this.crew + " if Princess Leia is in: " + isLeiaOnPlanet;
+        if(this.starShip != null ) {
+            return "Information: the starship in use: " + this.starShip.toString() + " the number of crews on board: " + this.crew + " if Princess Leia is in: " + isLeiaOnPlanet;
+        }else{
+            return "Information: No starship in use, the number of crews on board: " + this.crew + " if Princess Leia is in: " + isLeiaOnPlanet;
+        }
     }
 
     public static class InformationBuilder{
